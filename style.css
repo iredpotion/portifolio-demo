@@ -1,0 +1,468 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --primary-color: #00d9ff;
+    --overlay-color: #00d9ff;
+    --menu-speed: 0.4s;
+    --first-color: hsl(82, 60%, 28%);
+    --title-color: hsl(0, 0%, 15%);
+    --text-color: hsl(0, 0%, 35%);
+    --body-color: hsl(0, 0%, 95%);
+    --container-color: hsl(0, 0%, 100%);
+    --h2-font-size: 1.25rem;
+    --small-font-size:.813rem;
+}
+
+@media screen and (min-width: 1120px) {
+    :root {
+        --h2-font-size: 1.5rem;
+        --small-font-size: .875rem;
+    }    
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;    
+}
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+body{    
+    font-family: Poppins, cursive;
+    line-height: 1.4;       
+}
+
+.showcase{
+    /* background-color: var(--primary-color); */
+    color:black;
+    height: 100vh;            
+}
+
+.showcase .showcase-inner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    height: 100%;
+    margin-inline: 3.5rem;
+    padding-block: 5rem; 
+}
+
+.showcase h1{
+    font-size: 4rem;    
+}
+
+.showcase p{
+    font-size: 1.3rem;       
+}
+
+.menu-wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.menu-wrap .toggler{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+}
+
+.menu-wrap .hamburger{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    /* background: var(--primary-color); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hamburger line */
+.menu-wrap .hamburger >div {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+/* Top and bottom lines */
+.menu-wrap .hamburger > div:before,
+.menu-wrap .hamburger > div:after{
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background: inherit;
+}
+
+/* Moves line down */
+.menu-wrap .hamburger > div:after{
+    top: 10px;    
+}
+
+/* Toggler animate */
+.menu-wrap .toggler:checked + .hamburger > div{
+    transform: rotate(135deg);
+}
+
+/* Turn Lines into X */
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after{
+    top: 0;
+    transform: rotate(90deg);
+}
+
+/* Rotate on hover when checked */
+.menu-wrap .toggler:checked:hover + .hamburger > div{
+    transform: rotate(225deg);
+}
+
+/* Show menu */
+.menu-wrap .toggler:checked ~ .menu{
+    visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div{
+    transform: scale(1);
+    transition-duration: var(--menu-speed);
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div{
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     visibility: hidden; 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-wrap .menu > div{
+    background-color: var(--overlay-color);
+    border-radius: 50%;
+    /* previous 200vw */
+    width: 500vw;
+    height: 500vw;
+    /* previous 200vw */
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+     transform: scale(0); 
+    transition: all 0.4s ease;
+}
+
+.menu-wrap .menu > div >div{
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0; 
+    transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li {
+    list-style: none;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.menu-wrap .menu >div > div > ul > li > a{
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+
+.my-name {
+  color: #00d9ff;
+}
+
+.resume {  
+    position: relative;
+    text-align: left;
+    margin-inline: 3.5rem;
+    padding-block: 5rem;      
+}
+
+.skill, .contact {
+    position: relative;
+    text-align: center;
+    margin-inline: 3.5rem;
+    padding-block: 5rem;
+}
+
+.title {    
+    text-align: center;
+}
+
+.line {
+    height: 3px;
+    border: 0;
+    background: #00d9ff;
+    margin-bottom: 20px;
+    position: relative;
+    text-align: center;
+    margin: 0 60px 0 60px;
+}
+
+.icons {
+    display: inline-block;
+    justify-content: center;
+    text-align: center;    
+    margin: 15px; 
+    color: black;   
+}
+
+.skill-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;        
+    transition: transform 0.3s ease-out;   
+}
+
+.skill-icon:hover{
+    transform: translateY(-5px);
+}
+
+.htmlic:hover {
+    color:#DD4B25;
+}
+
+.cssic:hover{
+    color: #52A1DE;
+}
+
+.jsic:hover{
+    color: #EFD81D;
+}
+
+.linkic:hover{
+    color: #0a66c2;
+}
+
+.mailic:hover{    
+    color: #f2a60c;
+}
+
+.githic:hover {
+    color: #33333391;
+}
+
+
+/*PROJECTS*/
+
+.project {
+    display: grid;
+    place-items: center;
+    margin-inline: 3.5rem;
+    padding-block: 5rem;
+}
+
+.card-container {
+    display: grid;
+    row-gap: 3.5rem;
+}
+
+.card-article {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 328px;
+    border-radius: 1.5rem;
+}
+
+.card-data {
+    width: 280px;
+    background-color: var(--container-color);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+    border-radius: 1rem;
+    position: absolute;
+    bottom: -9rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    opacity: 0;
+    transition: opacity 1s 1s;
+}
+
+.card-description {
+    display: block;
+    font-size: var(--small-font-size);
+    margin-bottom: .25rem;
+}
+
+.card-title {
+    font-size: var(--h2-font-size);
+    font-weight: 500;
+    color: var(--title-color);
+    margin-bottom: .75rem;
+}
+
+.card-button {
+    text-decoration: none;
+    font-size: var(--small-font-size);
+    font-weight: 500;
+    color: var(--first-colo)
+}
+
+
+
+/*CARD ANIMATIONS*/
+
+.card-button:hover {
+    text-decoration: underline;
+}
+
+.card-article:hover .card-data{
+    animation: show-data 1s forwards;
+    opacity: 1;
+    transition: opacity .3s;    
+}
+
+.card-article:hover {
+    animation: remove-overflow 2s forwards;
+}
+
+.card-article:not(:hover) {
+    animation: show-overflow 2s forwards;
+}
+
+.card-article:not(:hover) .card-data{
+    animation: remove-data 1s forwards;
+}
+
+@keyframes show-data {
+    50% {
+        transform: translateY(-10rem);
+    }  
+    100% {
+        transform: translateY(-7rem);
+    }  
+}
+
+@keyframes remove-overflow {
+    to {
+        overflow: initial;
+    }
+}
+
+@keyframes remove-data {
+    0% {
+        transform: translateY(-7rem);
+    }
+    50% {
+        transform: translateY(-10rem);
+    }
+    100% {
+        transform: translateY(.5rem);
+    }    
+}
+
+@keyframes show-overflow {
+    0% {
+        overflow: initial;
+        pointer-events: none;
+    }
+    50% {
+        overflow: hidden;
+    }    
+}
+.footer-content {
+    display: flex;
+    position: relative; 
+    justify-content: center; 
+    align-items: center;
+    height: 3rem; 
+    opacity: .3;
+}
+
+
+/*BREAKPOINTS*/
+
+@media screen and (max-width: 340px) {
+    .projects   {
+        margin-inline: 1rem;
+    }
+    .card-data {
+        width: 250px;
+        padding: 1rem;
+    }
+    .line {
+        width: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 1120px) {
+    .projects {
+        height: 100vh;        
+    }
+    .card-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .card-image {
+        width: 348px;
+    }
+    .card-data {
+        width: 316px;
+        padding-inline: 2.5rem;
+    }
+}
+
+
+
+/* colors heaven
+#F8F6E3
+#97E7E1
+#6AD4DD
+#7AA2E3
+*/
+
+/* colors hell
+#FF204E
+#A0153E
+#5D0E41
+#00224D
+*/
